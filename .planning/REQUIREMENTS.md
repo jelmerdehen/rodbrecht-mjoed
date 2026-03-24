@@ -90,37 +90,37 @@ Deferred to future release. Tracked but not in current roadmap.
 | STRC-03 | Phase 1 | Pending |
 | STRC-04 | Phase 1 | Pending |
 | STRC-05 | Phase 1 | Pending |
-| STRC-06 | Phase 1 | Pending |
+| STRC-06 | Phase 2 | Pending |
 | STRC-07 | Phase 1 | Pending |
 | STRC-08 | Phase 1 | Pending |
 | VISL-01 | Phase 1 | Pending |
 | VISL-02 | Phase 1 | Pending |
 | VISL-03 | Phase 1 | Pending |
 | VISL-04 | Phase 1 | Pending |
-| VISL-05 | Phase 1 | Pending |
+| VISL-05 | Phase 2 | Pending |
 | VISL-06 | Phase 1 | Pending |
 | VISL-07 | Phase 1 | Pending |
-| CONT-01 | Phase 1 | Pending |
-| CONT-02 | Phase 1 | Pending |
-| CONT-03 | Phase 1 | Pending |
-| CONT-04 | Phase 1 | Pending |
-| CONT-05 | Phase 1 | Pending |
-| CONT-06 | Phase 1 | Pending |
-| CONT-07 | Phase 1 | Pending |
-| CONT-08 | Phase 1 | Pending |
-| ATMO-01 | Phase 1 | Pending |
-| ATMO-02 | Phase 1 | Pending |
-| ATMO-03 | Phase 1 | Pending |
-| ATMO-04 | Phase 1 | Pending |
-| ATMO-05 | Phase 1 | Pending |
-| DEPL-01 | Phase 1 | Pending |
-| DEPL-02 | Phase 1 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Pending |
+| CONT-07 | Phase 2 | Pending |
+| CONT-08 | Phase 2 | Pending |
+| ATMO-01 | Phase 3 | Pending |
+| ATMO-02 | Phase 3 | Pending |
+| ATMO-03 | Phase 3 | Pending |
+| ATMO-04 | Phase 3 | Pending |
+| ATMO-05 | Phase 3 | Pending |
+| DEPL-01 | Phase 3 | Pending |
+| DEPL-02 | Phase 3 | Pending |
 
 **Coverage:**
 - v1 requirements: 30 total
 - Mapped to phases: 30
-- Unmapped: 0 (traceability updated during roadmap creation)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-25*
-*Last updated: 2026-03-25 after initial definition*
+*Last updated: 2026-03-25 after roadmap creation*

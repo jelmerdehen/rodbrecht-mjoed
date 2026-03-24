@@ -39,7 +39,19 @@ The site must feel like stepping into a Viking metal album booklet — immersive
 ## Context
 
 - The brewer crafts mead (mjød) and beers in a home workshop with stainless steel equipment (kegs, carboys, hydrometers)
-- Real photos available: workshop shots, carboys, berries, honey, finished mead in glasses, brewing equipment
+- Real photos available at `/data/pwn/mjoed/pictures/` (12 photos from Instagram):
+  - Logo: `610784975...jpeg` — Yggdrasil tree circle logo, gold/dark brown
+  - Bottle: `619863581...jpg` — Dark bottle with gold Rodbrecht label
+  - Splatter art: `623409876...jpg` — Dark ink on gold (texture source)
+  - Frozen berries: `624134708...jpg` — Berries in steel pot (Ritual: Raven's Blessing)
+  - Honey: `618634369...jpg` — Dripping honey jug (Ritual: Awakening the Honey)
+  - Carboys: `621815138...jpg` — Batch 2 fermenting (Ritual: Descent into Cauldron)
+  - Brew + boil: `623274840...jpg` — Dark beer glass + boiling pot on stove
+  - Hydrometer: `624325678...jpg` — Reading in foamy liquid
+  - 4 carboys: `626649624...jpg` — Multiple batches in sink with airlocks
+  - Mini keg: `627160253...jpg` — Stainless mini keg with branded glass (hero candidate)
+  - Mead samples: `628898400...jpg`, `642356782...jpg` — Golden and cloudy mead
+- Instagram: https://www.instagram.com/rodbrecht_mjoed/
 - Aesthetic references: Amon Amarth, Wardruna album art, Viking metal band pages
 - Site name: "Rodbrecht Mjød & Brews"
 - Tagline: "Forged in the Roots of Yggdrasil – Brewed for Valhalla"
