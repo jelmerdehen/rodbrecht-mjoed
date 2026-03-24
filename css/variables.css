@@ -1,0 +1,57 @@
+/* ============================================
+   Design Tokens -- Rodbrecht Mjod & Brews
+   ============================================ */
+
+:root {
+  /* Raw color tokens */
+  --color-void: #0A0A0A;
+  --color-wood: #4A2C0B;
+  --color-blood: #8B0000;
+  --color-gold: #D4AF37;
+  --color-steel: #A8B5B8;
+  --color-yggdrasil: #2D5016;
+  --color-fire: #CC4400;
+
+  /* Semantic tokens -- blood and wood are DECORATIVE ONLY, never for text */
+  --bg-primary: var(--color-void);
+  --bg-section-alt: #0D0D0D;
+  --text-primary: var(--color-steel);
+  --text-heading: var(--color-gold);
+  --text-accent: var(--color-gold);
+  --accent-decorative: var(--color-blood);  /* borders, glows, dividers ONLY */
+
+  /* Typography */
+  --font-heading: 'UnifrakturMaguntia', 'MedievalSharp', Georgia, serif;
+  --font-sub: 'MedievalSharp', Georgia, serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --text-hero: clamp(3rem, 8vw, 7rem);
+  --text-2xl: clamp(2rem, 4vw, 3.5rem);
+  --text-xl: 1.5rem;
+  --text-lg: 1.25rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-section: clamp(4rem, 10vh, 8rem);
+  --content-width: min(90rem, 90vw);
+  --card-width: min(20rem, 85vw);
+
+  /* Z-index scale */
+  --z-background: 0;
+  --z-texture: 1;
+  --z-decorative: 2;
+  --z-content: 3;
+  --z-nav: 100;
+  --z-lightbox: 200;
+  --z-loading: 300;
+
+  /* Effects */
+  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.4);
+  --glow-blood: 0 0 15px rgba(139, 0, 0, 0.5);
+  --transition-reveal: opacity 0.8s ease, transform 0.8s ease;
+}

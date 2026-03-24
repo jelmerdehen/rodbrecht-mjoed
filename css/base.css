@@ -1,0 +1,57 @@
+/* ============================================
+   Base Typography & Global Styles
+   ============================================ */
+
+/* Google Fonts loaded in HTML <head> */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+/* Typography hierarchy */
+h1, h2 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+  text-shadow: var(--glow-gold);
+  letter-spacing: 0.02em;
+}
+
+h3, h4 {
+  font-family: var(--font-sub);
+  color: var(--text-heading);
+}
+
+h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+h1 { font-size: var(--text-hero); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+strong {
+  color: var(--text-heading);
+}
+
+/* Links */
+a:hover {
+  color: var(--text-heading);
+}
+
+/* Selection */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--color-steel);
+}
