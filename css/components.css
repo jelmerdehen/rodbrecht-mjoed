@@ -1,0 +1,550 @@
+/* ============================================
+   Components -- Nav, Hero, Cards, Sections, Gallery, Footer
+   ============================================ */
+
+/* ---- Loading Overlay ---- */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+}
+
+.loading-overlay.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-overlay__rune {
+  font-size: 3rem;
+  color: var(--color-gold);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ---- Navigation ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(74, 44, 11, 0.4);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+}
+
+.nav__brand {
+  font-size: var(--text-lg);
+  color: var(--color-gold);
+  letter-spacing: 0.3em;
+  opacity: 0.7;
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.nav__link {
+  font-family: var(--font-sub);
+  color: var(--color-steel);
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-sm);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--color-gold);
+}
+
+.nav__link.active::after,
+.nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Mobile hamburger */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+}
+
+.nav__toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-gold);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: var(--space-lg);
+    gap: var(--space-md);
+    text-align: center;
+    border-bottom: 1px solid rgba(74, 44, 11, 0.4);
+  }
+
+  .nav--open .nav__links {
+    display: flex;
+  }
+
+  .nav--open .nav__toggle-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .nav--open .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav--open .nav__toggle-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+/* ---- Hero Section ---- */
+.section--hero {
+  position: relative;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Noise texture layer */
+.hero__noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: var(--z-texture);
+}
+
+/* Vignette overlay */
+.section--hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, var(--color-void) 80%);
+  pointer-events: none;
+  z-index: var(--z-texture);
+}
+
+.hero__content {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+}
+
+.hero__logo {
+  width: clamp(280px, 60vmin, 600px);
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px rgba(212, 175, 55, 0.2),
+    0 0 80px rgba(212, 175, 55, 0.1);
+}
+
+.hero__tagline {
+  font-family: var(--font-sub);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--color-gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.05em;
+  max-width: 40ch;
+}
+
+/* CTA button */
+.hero__cta {
+  display: inline-block;
+  font-family: var(--font-sub);
+  font-size: var(--text-base);
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  padding: var(--space-sm) var(--space-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* Glow on pseudo-element for performance */
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 175, 55, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero__cta::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hero__cta:hover::before {
+  opacity: 1;
+}
+
+.hero__cta:hover::after {
+  opacity: 1;
+}
+
+/* Scroll indicator */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-content);
+  color: var(--color-gold);
+  opacity: 0.6;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ---- Brewer's Saga ---- */
+.section--saga {
+  background: var(--bg-primary);
+}
+
+.saga__text p {
+  font-size: var(--text-lg);
+  line-height: 1.9;
+}
+
+.saga__drop-cap::first-letter {
+  font-family: var(--font-heading);
+  font-size: 4em;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  color: var(--color-gold);
+  text-shadow: var(--glow-gold);
+}
+
+/* Rune-framed images */
+.rune-frame {
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+.saga__image-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Brew Cards ---- */
+.brew-grid {
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+}
+
+.brew-card {
+  background: #111;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+/* Glow effect on pseudo-element */
+.brew-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 40px rgba(212, 175, 55, 0.1);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.brew-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.brew-card:hover::after {
+  opacity: 1;
+}
+
+.brew-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.brew-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.brew-card:hover .brew-card__image {
+  transform: scale(1.05);
+}
+
+.brew-card__badge {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-family: var(--font-sub);
+  font-size: var(--text-sm);
+  padding: var(--space-xs) var(--space-sm);
+  transform: rotate(3deg);
+}
+
+.brew-card__badge--limited {
+  background: var(--color-blood);
+  color: var(--color-gold);
+}
+
+.brew-card__body {
+  padding: var(--space-lg);
+}
+
+.brew-card__name {
+  font-family: var(--font-sub);
+  color: var(--color-gold);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.brew-card__abv {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 2px var(--space-sm);
+  margin-bottom: var(--space-md);
+  border-radius: 100px;
+}
+
+.brew-card__notes {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+/* ---- Brewing Ritual ---- */
+.section--ritual {
+  background: var(--bg-primary);
+}
+
+.ritual__chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ritual__chapter {
+  padding-block: var(--space-xl);
+}
+
+.ritual__chapter-num {
+  font-family: var(--font-sub);
+  color: var(--color-gold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+
+.ritual__text h3 {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.ritual__text p {
+  font-size: var(--text-lg);
+  line-height: 1.9;
+}
+
+.ritual__connector {
+  width: 2px;
+  height: 3rem;
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), rgba(74, 44, 11, 0.2));
+  margin-inline: auto;
+}
+
+/* ---- Gallery Grid ---- */
+.gallery-grid {
+  columns: 3;
+  column-gap: var(--space-md);
+}
+
+.gallery-item {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: var(--space-md);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid { columns: 2; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid { columns: 1; }
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: #111;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid rgba(74, 44, 11, 0.3);
+}
+
+.footer__social {
+  margin-bottom: var(--space-lg);
+}
+
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-gold);
+  font-family: var(--font-sub);
+  font-size: var(--text-base);
+  padding: var(--space-sm) var(--space-lg);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 100px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer__social-link::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 100px;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.footer__social-link:hover::after {
+  opacity: 1;
+}
+
+.footer__copy {
+  font-size: var(--text-sm);
+  color: var(--color-steel);
+  opacity: 0.6;
+  margin-bottom: var(--space-xs);
+}
+
+.footer__tagline {
+  font-family: var(--font-sub);
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  opacity: 0.4;
+  margin-bottom: 0;
+}
+
+/* ---- Rune Divider (inline SVG) ---- */
+.rune-divider {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+}
+
+/* ---- GLightbox dark theme overrides ---- */
+.goverlay {
+  background: rgba(10, 10, 10, 0.95) !important;
+}
+
+.gclose,
+.gnext,
+.gprev {
+  filter: invert(0.8) sepia(0.5) hue-rotate(10deg) !important;
+}
+
+.gdesc-inner {
+  color: var(--color-steel) !important;
+  font-family: var(--font-body) !important;
+}
