@@ -513,7 +513,7 @@
 .footer__copy {
   font-size: var(--text-sm);
   color: var(--color-steel);
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: var(--space-xs);
 }
 
@@ -521,7 +521,7 @@
   font-family: var(--font-sub);
   font-size: var(--text-sm);
   color: var(--color-gold);
-  opacity: 0.4;
+  opacity: 0.6;
   margin-bottom: 0;
 }
 
