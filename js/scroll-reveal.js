@@ -55,7 +55,9 @@ export function initScrollReveal() {
   });
 
   reveals.forEach(el => {
-    preloadObserver.observe(el);
+    if (el.querySelector('img[loading="lazy"]')) {
+      preloadObserver.observe(el);
+    }
     revealObserver.observe(el);
   });
 }

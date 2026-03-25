@@ -48,7 +48,6 @@
 
 /* Text alignment */
 .text-center { text-align: center; }
-.text-left { text-align: left; }
 
 /* Spacing */
 .mt-sm { margin-top: var(--space-sm); }

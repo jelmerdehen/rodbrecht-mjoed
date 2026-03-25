@@ -52,6 +52,5 @@
 
   /* Effects */
   --glow-gold: 0 0 20px rgba(212, 175, 55, 0.4);
-  --glow-blood: 0 0 15px rgba(139, 0, 0, 0.5);
   --transition-reveal: opacity 0.8s ease, transform 0.8s ease;
 }

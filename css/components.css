@@ -289,10 +289,6 @@
 }
 
 /* ---- Brew Cards ---- */
-.brew-grid {
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
-}
-
 .brew-card {
   background: #141414;
   border: 1px solid rgba(212, 175, 55, 0.25);
@@ -391,7 +387,6 @@
 .ritual__chapters {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .ritual__chapter {

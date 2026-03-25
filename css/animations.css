@@ -21,27 +21,6 @@
   60% { transform: translateX(-50%) translateY(-5px); }
 }
 
-@keyframes ember-drift {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.4;
-  }
-  90% {
-    opacity: 0.2;
-  }
-  100% {
-    transform: translateY(-100vh) translateX(30px);
-    opacity: 0;
-  }
-}
-
-@keyframes loading-fade {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
 
 /* ---- Section heading shimmer ---- */
 .section__header h2 {

@@ -1,73 +1,48 @@
 // ============================================
-// Effects -- GSAP parallax, Canvas ember particles, entrance animations
+// Effects -- GSAP parallax, Canvas ember particles
 // ============================================
 
 export function initEffects() {
-  // Respect prefers-reduced-motion: skip ALL effects
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   initParallax();
   initEmberParticles();
-  initEntranceAnimations();
 }
 
-// ---- GSAP Parallax ----
 function initParallax() {
-  // GSAP and ScrollTrigger are loaded via CDN
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Disable parallax on mobile for performance
   if (window.innerWidth < 768) return;
 
-  // Parallax on hero noise texture
   const heroNoise = document.querySelector('.hero__noise');
   if (heroNoise) {
     gsap.to(heroNoise, {
       y: '20%',
       ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
 
-  // Parallax on hero logo (slower scroll)
   const heroLogo = document.querySelector('.hero__logo');
   if (heroLogo) {
     gsap.to(heroLogo, {
       y: '15%',
       ease: 'none',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
 
-  // Parallax on rune dividers
   document.querySelectorAll('.rune-divider').forEach(divider => {
     gsap.to(divider, {
       y: '-10%',
       ease: 'none',
-      scrollTrigger: {
-        trigger: divider,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
+      scrollTrigger: { trigger: divider, start: 'top bottom', end: 'bottom top', scrub: true }
     });
   });
 }
 
-// ---- Canvas Ember Particles ----
 function initEmberParticles() {
   const hero = document.getElementById('hero');
   if (!hero) return;
@@ -80,11 +55,17 @@ function initEmberParticles() {
   const ctx = canvas.getContext('2d');
   let particles = [];
   let animId = null;
+  let resizeTimer = null;
   const PARTICLE_COUNT = 30;
 
   function resize() {
     canvas.width = hero.offsetWidth;
     canvas.height = hero.offsetHeight;
+  }
+
+  function debouncedResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
   }
 
   function createParticle() {
@@ -102,13 +83,15 @@ function initEmberParticles() {
     };
   }
 
-  function init() {
-    resize();
-    particles = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      const p = createParticle();
-      p.y = Math.random() * canvas.height; // Spread initial positions
-      particles.push(p);
+  function start() {
+    if (animId) return;
+    animate();
+  }
+
+  function stop() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
     }
   }
 
@@ -120,7 +103,6 @@ function initEmberParticles() {
       p.wobble += p.wobbleSpeed;
       p.x += p.speedX + Math.sin(p.wobble) * 0.3;
 
-      // Respawn at bottom
       if (p.y < -10) {
         p.y = canvas.height + 10;
         p.x = Math.random() * canvas.width;
@@ -135,30 +117,29 @@ function initEmberParticles() {
     animId = requestAnimationFrame(animate);
   }
 
-  // Pause when tab not visible
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(animId);
-      animId = null;
-    } else if (!animId) {
-      animate();
+  // Pause when hero is off-screen or tab is hidden
+  const heroObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !document.hidden) {
+      start();
+    } else {
+      stop();
     }
+  }, { threshold: 0 });
+
+  heroObserver.observe(hero);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else if (hero.getBoundingClientRect().bottom > 0) start();
   });
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', debouncedResize);
 
-  init();
-  animate();
-}
-
-// ---- GSAP Section Entrance Animations ----
-function initEntranceAnimations() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  // Disable complex animations on mobile
-  if (window.innerWidth < 768) return;
-
-  // Brew cards, ritual chapters, and gallery items use CSS reveal system
-  // (IntersectionObserver + .reveal/.is-visible classes in scroll-reveal.js)
-  // No GSAP animation here — inline styles from gsap.from() conflict with CSS transitions
+  // Init particles
+  resize();
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const p = createParticle();
+    p.y = Math.random() * canvas.height;
+    particles.push(p);
+  }
 }
