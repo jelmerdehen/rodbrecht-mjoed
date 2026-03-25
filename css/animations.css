@@ -21,10 +21,181 @@
   60% { transform: translateX(-50%) translateY(-5px); }
 }
 
+@keyframes logo-breathe {
+  0%, 100% {
+    box-shadow:
+      0 0 40px rgba(212, 175, 55, 0.2),
+      0 0 80px rgba(212, 175, 55, 0.1),
+      0 0 160px rgba(212, 175, 55, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 60px rgba(212, 175, 55, 0.35),
+      0 0 120px rgba(212, 175, 55, 0.18),
+      0 0 220px rgba(212, 175, 55, 0.06);
+  }
+}
+
+@keyframes cta-shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes connector-pulse {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 3rem; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* ---- Section heading shimmer ---- */
 .section__header h2 {
   animation: rune-shimmer 4s ease-in-out infinite;
+}
+
+/* ---- Hero logo breathing glow ---- */
+.hero__logo {
+  animation: logo-breathe 6s ease-in-out infinite;
+}
+
+/* ---- CTA shimmer sweep on hover ---- */
+.hero__cta {
+  overflow: hidden;
+}
+
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.15),
+    transparent
+  );
+  transition: none;
+}
+
+.hero__cta:hover::before {
+  animation: cta-shimmer 0.6s ease forwards;
+}
+
+/* ---- Ritual connector animated pulse ---- */
+.ritual__connector {
+  background:
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.3), rgba(74, 44, 11, 0.2)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(212, 175, 55, 0.5) 0px,
+      rgba(212, 175, 55, 0.5) 4px,
+      transparent 4px,
+      transparent 12px
+    ) !important;
+  background-size: 100% 100%, 2px 3rem !important;
+  animation: connector-pulse 2s linear infinite;
+}
+
+/* ---- Gallery item hover lift with warm underglow ---- */
+.gallery-item {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Brew card image overlay gradient on hover ---- */
+.brew-card__image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.5), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.brew-card:hover .brew-card__image-wrap::after {
+  opacity: 1;
+}
+
+/* ---- Scroll-to-top button ---- */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.scroll-top.visible {
+  opacity: 0.7;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ---- Scroll progress bar ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), rgba(212, 175, 55, 0.4));
+  z-index: 200;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: none;
+}
+
+/* ---- Rune-frame image hover enhancement ---- */
+.rune-frame {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.rune-frame:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+/* ---- Footer social links spacing ---- */
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
 }
 
 /* ---- prefers-reduced-motion ---- */
@@ -45,5 +216,14 @@
 
   .hero__scroll-indicator {
     animation: none !important;
+  }
+
+  .hero__logo {
+    animation: none !important;
+  }
+
+  .scroll-top,
+  .scroll-progress {
+    display: none !important;
   }
 }

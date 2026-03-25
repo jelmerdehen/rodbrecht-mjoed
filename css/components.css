@@ -188,10 +188,6 @@
   height: auto;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow:
-    0 0 60px rgba(212, 175, 55, 0.3),
-    0 0 120px rgba(212, 175, 55, 0.15),
-    0 0 200px rgba(212, 175, 55, 0.05);
 }
 
 .hero__tagline {
@@ -218,16 +214,7 @@
   transition: color 0.3s ease;
 }
 
-/* Glow on pseudo-element for performance */
-.hero__cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(212, 175, 55, 0.1);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
+/* CTA glow on hover */
 .hero__cta::after {
   content: '';
   position: absolute;
@@ -238,8 +225,8 @@
   pointer-events: none;
 }
 
-.hero__cta:hover::before {
-  opacity: 1;
+.hero__cta:hover {
+  background: rgba(212, 175, 55, 0.08);
 }
 
 .hero__cta:hover::after {

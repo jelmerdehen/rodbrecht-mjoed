@@ -50,9 +50,19 @@
 </head>
 <body>
 
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Scroll to top button -->
+  <button class="scroll-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
   <!-- Loading Overlay -->
   <div class="loading-overlay" aria-hidden="true">
-    <div class="loading-overlay__rune">&#x16A0;</div>
+    <img src="assets/images/hero/logo.jpeg" alt="" width="120" height="120" style="border-radius:50%; opacity:0; animation: fade-up 0.8s ease 0.2s forwards;">
   </div>
 
   <!-- ============================================

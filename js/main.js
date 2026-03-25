@@ -6,6 +6,7 @@ import { initNavigation } from './navigation.js';
 import { initScrollReveal } from './scroll-reveal.js';
 import { initGallery } from './gallery.js';
 import { initEffects } from './effects.js';
+import { initScrollExtras } from './scroll-extras.js';
 
 document.documentElement.classList.add('js-enabled');
 
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initGallery();
   initEffects();
+  initScrollExtras();
 
   const loader = document.querySelector('.loading-overlay');
   if (!loader) return;
