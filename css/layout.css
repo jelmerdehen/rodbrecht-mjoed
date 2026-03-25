@@ -56,9 +56,20 @@
   background-color: var(--bg-section-alt);
 }
 
-/* Section top border for visual separation */
-.section:not(.section--hero) {
-  border-top: 1px solid rgba(74, 44, 11, 0.3);
+/* Soft gradient fade between sections instead of hard border */
+.section:not(.section--hero)::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.2) 30%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.2) 70%,
+    transparent
+  );
+  margin-bottom: var(--space-section);
 }
 
 /* Flex center utility for hero */
@@ -82,8 +93,9 @@
 .section__subtitle {
   font-family: var(--font-sub);
   color: var(--text-accent);
-  font-size: var(--text-lg);
-  opacity: 0.8;
+  font-size: var(--text-base);
+  opacity: 0.5;
+  letter-spacing: 0.08em;
 }
 
 /* Responsive breakpoints */

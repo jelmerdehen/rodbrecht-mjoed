@@ -91,12 +91,31 @@
 
 /* ---- Gallery item hover lift with warm underglow ---- */
 .gallery-item {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease;
 }
 
 .gallery-item:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(212, 175, 55, 0.12), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Staggered reveal delays for gallery items */
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(1) { transition-delay: 0s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(2) { transition-delay: 0.06s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(3) { transition-delay: 0.12s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(4) { transition-delay: 0.18s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(5) { transition-delay: 0.24s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(6) { transition-delay: 0.30s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(7) { transition-delay: 0.36s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(8) { transition-delay: 0.42s; }
+.js-enabled .gallery-grid.is-visible .gallery-item:nth-child(9) { transition-delay: 0.48s; }
+.js-enabled .gallery-grid .gallery-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-enabled .gallery-grid.is-visible .gallery-item {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---- Brew card image overlay gradient on hover ---- */

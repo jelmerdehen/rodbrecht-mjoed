@@ -1,5 +1,5 @@
 // ============================================
-// Navigation -- Smooth scroll, scroll spy, mobile hamburger
+// Navigation -- Smooth scroll, scroll spy, mobile hamburger, smart hide
 // ============================================
 
 export function initNavigation() {
@@ -26,12 +26,6 @@ export function initNavigation() {
   });
 
   // ---- Scroll spy ----
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -60% 0px',
-    threshold: 0
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -41,9 +35,43 @@ export function initNavigation() {
         });
       }
     });
-  }, observerOptions);
+  }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
   sections.forEach(section => observer.observe(section));
+
+  // ---- Smart hide on scroll ----
+  let lastScroll = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const currentScroll = window.scrollY;
+      // Always show near top
+      if (currentScroll < 100) {
+        nav.classList.remove('nav--hidden');
+      } else if (currentScroll > lastScroll + 5) {
+        // Scrolling down — hide
+        nav.classList.add('nav--hidden');
+        closeMenu();
+      } else if (currentScroll < lastScroll - 5) {
+        // Scrolling up — show
+        nav.classList.remove('nav--hidden');
+      }
+      lastScroll = currentScroll;
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // ---- Hero scroll indicator fade ----
+  const scrollIndicator = document.querySelector('.hero__scroll-indicator');
+  if (scrollIndicator) {
+    window.addEventListener('scroll', () => {
+      const opacity = Math.max(0, 1 - window.scrollY / 300);
+      scrollIndicator.style.opacity = opacity * 0.6;
+    }, { passive: true });
+  }
 
   // ---- Mobile hamburger ----
   toggle.addEventListener('click', () => {
@@ -51,14 +79,12 @@ export function initNavigation() {
     toggle.setAttribute('aria-expanded', isOpen);
   });
 
-  // Close on click outside
   document.addEventListener('click', (e) => {
     if (!nav.contains(e.target) && nav.classList.contains('nav--open')) {
       closeMenu();
     }
   });
 
-  // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('nav--open')) {
       closeMenu();
