@@ -158,56 +158,7 @@ function initEntranceAnimations() {
   // Disable complex animations on mobile
   if (window.innerWidth < 768) return;
 
-  // Stagger brew card reveals
-  const brewCards = document.querySelectorAll('.brew-card');
-  if (brewCards.length) {
-    gsap.from(brewCards, {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '#brews',
-        start: 'top 70%',
-        once: true
-      }
-    });
-  }
-
-  // Ritual chapter photos slide in from alternating sides
-  const ritualChapters = document.querySelectorAll('.ritual__chapter');
-  ritualChapters.forEach((chapter, i) => {
-    const imageWrap = chapter.querySelector('.ritual__image-wrap');
-    if (imageWrap) {
-      gsap.from(imageWrap, {
-        x: i % 2 === 0 ? -60 : 60,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: chapter,
-          start: 'top 70%',
-          once: true
-        }
-      });
-    }
-  });
-
-  // Gallery items fade in with stagger
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  if (galleryItems.length) {
-    gsap.from(galleryItems, {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.08,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '#relics',
-        start: 'top 70%',
-        once: true
-      }
-    });
-  }
+  // Brew cards, ritual chapters, and gallery items use CSS reveal system
+  // (IntersectionObserver + .reveal/.is-visible classes in scroll-reveal.js)
+  // No GSAP animation here — inline styles from gsap.from() conflict with CSS transitions
 }

@@ -301,11 +301,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Hover transform only after reveal completes */
-.brew-card.is-visible {
-  transition: transform 0.4s ease;
-}
-
 /* Glow effect on pseudo-element */
 .brew-card::after {
   content: '';
