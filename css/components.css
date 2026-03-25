@@ -184,12 +184,14 @@
   z-index: var(--z-texture);
 }
 
-/* Vignette overlay */
+/* Vignette overlay — fades to void at edges and bottom */
 .section--hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, var(--color-void) 80%);
+  background:
+    radial-gradient(ellipse at center, transparent 30%, var(--color-void) 80%),
+    linear-gradient(to bottom, transparent 70%, var(--color-void) 100%);
   pointer-events: none;
   z-index: var(--z-texture);
 }

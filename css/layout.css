@@ -56,7 +56,7 @@
   background-color: var(--bg-section-alt);
 }
 
-/* Soft gradient fade between sections instead of hard border */
+/* Soft gradient fade between sections */
 .section:not(.section--hero)::before {
   content: '';
   display: block;
@@ -64,12 +64,11 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(212, 175, 55, 0.2) 30%,
-    rgba(212, 175, 55, 0.3) 50%,
-    rgba(212, 175, 55, 0.2) 70%,
+    rgba(212, 175, 55, 0.15) 30%,
+    rgba(212, 175, 55, 0.25) 50%,
+    rgba(212, 175, 55, 0.15) 70%,
     transparent
   );
-  margin-bottom: var(--space-section);
 }
 
 /* Flex center utility for hero */
