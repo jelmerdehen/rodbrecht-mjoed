@@ -25,15 +25,6 @@ function initParallax() {
     });
   }
 
-  const heroLogo = document.querySelector('.hero__logo');
-  if (heroLogo) {
-    gsap.to(heroLogo, {
-      y: '15%',
-      ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true }
-    });
-  }
-
   document.querySelectorAll('.rune-divider').forEach(divider => {
     gsap.to(divider, {
       y: '-10%',
