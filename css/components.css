@@ -401,11 +401,9 @@
   line-height: 1.9;
 }
 
-.ritual__connector {
-  width: 2px;
-  height: 3rem;
-  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), rgba(74, 44, 11, 0.2));
-  margin-inline: auto;
+/* Chapters separated by subtle gold border */
+.ritual__chapter + .ritual__chapter {
+  border-top: 1px solid rgba(212, 175, 55, 0.12);
 }
 
 /* ---- Gallery Grid ---- */
