@@ -56,6 +56,11 @@
   background-color: var(--bg-section-alt);
 }
 
+/* Section top border for visual separation */
+.section:not(.section--hero) {
+  border-top: 1px solid rgba(74, 44, 11, 0.3);
+}
+
 /* Flex center utility for hero */
 .flex-center {
   display: flex;

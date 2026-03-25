@@ -11,25 +11,51 @@ export function initScrollReveal() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (prefersReducedMotion) {
-    // Show everything immediately
     reveals.forEach(el => el.classList.add('is-visible'));
     return;
   }
 
-  // IntersectionObserver for scroll-triggered reveals
-  const observer = new IntersectionObserver((entries) => {
+  // Pre-load lazy images inside reveal elements so they're ready when revealed
+  const preloadImages = (el) => {
+    el.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.loading = 'eager';
+    });
+  };
+
+  // Two observers: one to preload images early, one to reveal
+  const preloadObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        // One-time reveal: unobserve after revealing
-        observer.unobserve(entry.target);
+        preloadImages(entry.target);
+        preloadObserver.unobserve(entry.target);
       }
     });
   }, {
     root: null,
-    threshold: 0.15,
+    threshold: 0,
+    rootMargin: '200px' // preload 200px before entering viewport
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Use rAF to ensure the hidden state has been painted before transitioning
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            entry.target.classList.add('is-visible');
+          });
+        });
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.05,
     rootMargin: '0px'
   });
 
-  reveals.forEach(el => observer.observe(el));
+  reveals.forEach(el => {
+    preloadObserver.observe(el);
+    revealObserver.observe(el);
+  });
 }

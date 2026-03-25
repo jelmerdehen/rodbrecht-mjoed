@@ -182,13 +182,14 @@
 }
 
 .hero__logo {
-  width: clamp(280px, 60vmin, 600px);
+  width: clamp(320px, 70vmin, 700px);
   height: auto;
   object-fit: contain;
   border-radius: 50%;
   box-shadow:
-    0 0 40px rgba(212, 175, 55, 0.2),
-    0 0 80px rgba(212, 175, 55, 0.1);
+    0 0 60px rgba(212, 175, 55, 0.3),
+    0 0 120px rgba(212, 175, 55, 0.15),
+    0 0 200px rgba(212, 175, 55, 0.05);
 }
 
 .hero__tagline {
@@ -293,10 +294,15 @@
 }
 
 .brew-card {
-  background: #111;
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: #141414;
+  border: 1px solid rgba(212, 175, 55, 0.25);
   overflow: hidden;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover transform only after reveal completes */
+.brew-card.is-visible {
   transition: transform 0.4s ease;
 }
 
@@ -441,8 +447,9 @@
 .gallery-item img {
   width: 100%;
   height: auto;
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   transition: transform 0.4s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 .gallery-item::after {
@@ -531,6 +538,7 @@
   display: block;
   margin-inline: auto;
   margin-bottom: var(--space-md);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
 }
 
 /* ---- GLightbox dark theme overrides ---- */

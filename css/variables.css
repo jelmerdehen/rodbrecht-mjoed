@@ -14,7 +14,7 @@
 
   /* Semantic tokens -- blood and wood are DECORATIVE ONLY, never for text */
   --bg-primary: var(--color-void);
-  --bg-section-alt: #0D0D0D;
+  --bg-section-alt: #111111;
   --text-primary: var(--color-steel);
   --text-heading: var(--color-gold);
   --text-accent: var(--color-gold);
