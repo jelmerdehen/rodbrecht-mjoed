@@ -38,7 +38,9 @@ The site must feel like stepping into a Viking metal album booklet — immersive
 
 ## Context
 
-- The brewer crafts mead (mjød) and beers in a home workshop with stainless steel equipment (kegs, carboys, hydrometers)
+- The brewer crafts mead (mjød) and beers in an attic workshop in Apeldoorn, the Netherlands, with stainless steel equipment (kegs, carboys, hydrometers)
+- Ethos: organic and sustainable brewing where possible
+- Bio: "Join me on my mead making journey! Trying to be as organic and sustainable as possible while brewing. Based in an attic in Apeldoorn, the Netherlands."
 - Real photos available at `/data/pwn/mjoed/pictures/` (12 photos from Instagram):
   - Logo: `610784975...jpeg` — Yggdrasil tree circle logo, gold/dark brown
   - Bottle: `619863581...jpg` — Dark bottle with gold Rodbrecht label
