@@ -535,45 +535,61 @@
 
 /* ---- GLightbox dark theme overrides ---- */
 .goverlay {
-  background: rgba(10, 10, 10, 0.95) !important;
+  background: rgba(10, 10, 10, 0.97) !important;
 }
 
-.gclose,
-.gnext,
-.gprev {
-  filter: invert(0.8) sepia(0.5) hue-rotate(10deg) !important;
+.glightbox-clean .gclose,
+.glightbox-clean .gnext,
+.glightbox-clean .gprev {
+  background: rgba(212, 175, 55, 0.15) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 50% !important;
+  filter: none !important;
 }
 
-.gslide-description {
-  background: transparent !important;
+.glightbox-clean .gclose svg,
+.glightbox-clean .gnext svg,
+.glightbox-clean .gprev svg {
+  fill: var(--color-gold) !important;
 }
 
-.gdesc-inner {
-  color: var(--color-steel) !important;
-  font-family: var(--font-body) !important;
-  background: transparent !important;
-  padding: var(--space-sm) 0 !important;
-}
-
-.gslide-desc {
-  color: var(--color-steel) !important;
+.glightbox-clean .gclose:hover,
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gprev:hover {
+  background: rgba(212, 175, 55, 0.3) !important;
 }
 
 .glightbox-clean .gslide-description {
-  background: transparent !important;
+  background: rgba(10, 10, 10, 0.85) !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.2) !important;
 }
 
 .glightbox-clean .gdesc-inner {
-  padding: var(--space-sm) 0 !important;
+  padding: var(--space-md) var(--space-lg) !important;
+  background: transparent !important;
 }
 
 .glightbox-clean .gslide-title {
   color: var(--color-gold) !important;
   font-family: var(--font-sub) !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.25rem !important;
 }
 
-/* Counter styling */
-.gslide-counter {
+.glightbox-clean .gslide-desc {
   color: var(--color-steel) !important;
   font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.glightbox-clean .gslide-media {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+.glightbox-clean .gcounter {
+  color: var(--color-steel) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.85rem !important;
 }
